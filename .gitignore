@@ -1,0 +1,15 @@
+# Frontend
+ubys-frontend/node_modules
+ubys-frontend/dist
+ubys-frontend/.angular
+
+# Backend
+ubys-backend/vendor
+ubys-backend/.env
+ubys-backend/storage/logs/*
+ubys-backend/bootstrap/cache/*
+ubys-backend/database/mongodb/node_modules
+
+*.log
+.DS_Store
+Thumbs.db
