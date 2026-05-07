@@ -24,26 +24,16 @@ cd ubys
 > git submodule update --init --recursive
 > ```
 
-### 2. Backend'i başlat
+### 2. Tüm servisleri başlat
 
 ```bash
-cd ubys-backend
 docker compose up --build -d
 ```
 
-Backend `http://localhost:8001` adresinde çalışmaya başlar.
-
-### 3. Frontend'i başlat
-
-Yeni bir terminal aç:
-
-```bash
-cd ubys-frontend
-npm install
-npm start
-```
-
-Uygulama `http://localhost:4000` adresinde açılır.
+| Servis | URL |
+|--------|-----|
+| Frontend | http://localhost:4000 |
+| Backend API | http://localhost:8001 |
 
 ## Repo Yapısı
 
