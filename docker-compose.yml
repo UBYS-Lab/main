@@ -10,7 +10,7 @@ services:
       COMPOSER_ALLOW_SUPERUSER: "1"
       DB_CONNECTION: mongodb
       APP_DEBUG: "false"
-      DB_URI: 'mongodb://admin:admin!@72.61.136.135:27017/?authSource=admin&directConnection=true&serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=10000'
+      DB_URI: 'mongodb://admin:admin!@72.61.136.135:27017/?authSource=admin&directConnection=true&serverSelectionTimeoutMS=3000&connectTimeoutMS=3000&socketTimeoutMS=8000'
       DB_DATABASE: ubys
     command: ["sh", "./docker/php/entrypoint.sh", "php-fpm"]
     networks:
@@ -34,8 +34,22 @@ services:
       dockerfile: Dockerfile
     ports:
       - "4000:4000"
+    environment:
+      BACKEND_URL: 'http://nginx:8000'
     depends_on:
       - nginx
+    networks:
+      - ubys-network
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    command: http frontend:4000 --log=stdout
+    ports:
+      - "4040:4040"
+    environment:
+      NGROK_AUTHTOKEN: "${NGROK_AUTHTOKEN}"
+    depends_on:
+      - frontend
     networks:
       - ubys-network
 
